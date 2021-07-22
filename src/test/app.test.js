@@ -18,10 +18,27 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const request = require("supertest");
+const assert = require("assert");
 const app = require("../app");
 
 describe("GET /", () => {
-  it("responds with Hello World!", (done) => {
-    request(app).get("/").expect("Hello World!", done);
+  it("responds with successful result!", (done) => {
+    request(app)
+      .get("/current")
+      .expect(200)
+      .end(function (err, res) {
+        if (err) done(err);
+        done();
+      });
+  });
+
+  it("responds with current mock data!", (done) => {
+    request(app)
+      .get("/current")
+      .expect({ data: { bar: 990, rain: 1, temp: 28 } })
+      .end(function (err, res) {
+        if (err) done(err);
+        done();
+      });
   });
 });
