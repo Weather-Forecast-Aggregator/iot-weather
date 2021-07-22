@@ -1,0 +1,29 @@
+{
+  "name": "iot-weather",
+  "version": "1.0.0",
+  "description": "Iot weather provider simulator",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Weather-Forecast-Aggregator/iot-weather.git"
+  },
+  "keywords": [
+    "iot",
+    "weather",
+    "provider",
+    "simulator"
+  ],
+  "author": "Daniele Tentoni <daniele.tentoni2@studio.unibo.it>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Weather-Forecast-Aggregator/iot-weather/issues"
+  },
+  "homepage": "https://github.com/Weather-Forecast-Aggregator/iot-weather#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
