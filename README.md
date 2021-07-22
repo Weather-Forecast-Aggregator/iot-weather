@@ -39,6 +39,16 @@ Run the following command to send an http request to container running on localh
 curl -i localhost:49160
 ```
 
+## Data read
+
+| Name        | File name | Measure Unit             |
+| ----------- | --------- | ------------------------ |
+| Temperature | temp.data | Integer, Celsius         |
+| Pressure    | pres.data | Integer, mb              |
+| Rain        | rain.data | Integer, 0 = no, 1 = yes |
+
+Those data could be improved during the project run.
+
 ## License
 
 Provide local weather data to remote server.
