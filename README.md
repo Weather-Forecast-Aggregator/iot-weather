@@ -2,9 +2,9 @@
 
 Iot weather provider simulator.
 
-Solved deploy to heroku bug thanks to [onlinejudge95](https://github.com/AkhileshNS/heroku-deploy/issues/92#issuecomment-841797339)
+Deployed to [Heroku](https://iot-weather-simulator.herokuapp.com/). Status: [![Deploy](https://github.com/Weather-Forecast-Aggregator/iot-weather/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/Weather-Forecast-Aggregator/iot-weather/actions/workflows/deploy.yml).
 
-Deployed to [Heroku](https://iot-weather-simulator.herokuapp.com/)
+Solved deploy to heroku bug thanks to [onlinejudge95](https://github.com/AkhileshNS/heroku-deploy/issues/92#issuecomment-841797339)
 
 Docker tutorial from: [Dockerizing a Node.js web app](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
 
