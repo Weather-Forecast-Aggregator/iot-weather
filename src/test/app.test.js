@@ -17,18 +17,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const express = require("express");
+const request = require("supertest");
+const app = require("../app");
 
-const app = express();
-
-app.get("/", (req, res, next) => {
-  res.status(200).send("Hello World!");
+describe("GET /", () => {
+  it("responds with Hello World!", (done) => {
+    request(app).get("/").expect("Hello World!", done);
+  });
 });
-
-const port = process.env.PORT || 15600;
-
-app.listen(port, () => {
-  console.log("Application running on http://localhost:%i", port);
-});
-
-module.exports = app;
