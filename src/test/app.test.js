@@ -35,7 +35,7 @@ describe("GET /", () => {
   it("responds with current mock data!", (done) => {
     request(app)
       .get("/current")
-      .expect({ data: { bar: 990, rain: 1, temp: 28 } })
+      .expect({ data: { pres: 990, rain: 1, temp: 28 } })
       .end(function (err, res) {
         if (err) done(err);
         done();

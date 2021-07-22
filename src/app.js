@@ -27,7 +27,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/current", async (req, res, next) => {
-  const barFile = "bar.data";
+  // Don't read data from any source: specify every resource file name.
+  const barFile = "pres.data";
   const rainFile = "rain.data";
   const tempFile = "temp.data";
   const promises = [barFile, rainFile, tempFile].map((fileName) => {
@@ -38,7 +39,7 @@ app.get("/current", async (req, res, next) => {
         const ext = ".data";
         const elem = path.basename(fileName, ext);
         if (error) {
-          resolve({ name: elem, value: "... data not found" });
+          resolve({ name: elem, value: "" });
         } else {
           const result = `{ "${elem}": ${data} }`;
           resolve(JSON.parse(result));
