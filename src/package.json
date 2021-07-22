@@ -1,6 +1,6 @@
 {
   "name": "iot-weather",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Iot weather provider simulator",
   "main": "app.js",
   "scripts": {
