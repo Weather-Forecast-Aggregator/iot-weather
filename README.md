@@ -8,6 +8,8 @@ Solved deploy to heroku bug thanks to [onlinejudge95](https://github.com/Akhiles
 
 Docker tutorial from: [Dockerizing a Node.js web app](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
 
+This software is a part of [Weather Vortex](https://github.com/Weather-Vortex) project.
+
 ## How to build
 
 ```sh
