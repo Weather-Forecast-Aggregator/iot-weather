@@ -36,7 +36,7 @@ You can see your container with `[sudo] docker images` command.
 Execute the following command:
 
 ```sh
-sudo docker run -p 49160:15600 -d daniele.tentoni2/iot-weather
+sudo docker run -p 49160:15600 -d <your username>/iot-weather
 ```
 
 Note: the `-d` option tell docker to run in detached mode. So you have to run those commands to see logs:
