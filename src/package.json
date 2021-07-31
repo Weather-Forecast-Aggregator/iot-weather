@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha ./test/* --exit"
+    "test": "mocha ./test/* --exit",
+    "test-cov": "nyc --reporter=text npm test",
+    "test-cov-html": "nyc --reporter=html npm test"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "mocha": "^9.0.2",
+    "nyc": "^15.1.0",
     "supertest": "^6.1.4"
   }
 }
