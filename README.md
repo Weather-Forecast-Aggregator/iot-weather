@@ -10,6 +10,10 @@ Docker tutorial from: [Dockerizing a Node.js web app](https://nodejs.org/en/docs
 
 This software is a part of [Weather Vortex](https://github.com/Weather-Vortex) project.
 
+## Purpose
+
+Suppose that all sensors from an iot device that can run Node.js are put inside the folder fs in this repository (current values are mock data). This software run a web server with Express that expose those data.
+
 ## How to build
 
 ```sh
