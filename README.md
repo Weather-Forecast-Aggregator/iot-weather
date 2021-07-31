@@ -10,6 +10,15 @@ Docker tutorial from: [Dockerizing a Node.js web app](https://nodejs.org/en/docs
 
 This software is a part of [Weather Vortex](https://github.com/Weather-Vortex) project.
 
+## Table of Contents
+
+- [Purpose](#purpose)
+- [How to build](#how-to-build)
+- [How to run](#how-to-run)
+- [How to test](#how-to-test)
+- [Data read](#data-read)
+- [License](#license)
+
 ## Purpose
 
 Suppose that all sensors from an iot device that can run Node.js are put inside the folder fs in this repository (current values are mock data). This software run a web server with Express that expose those data.
@@ -43,6 +52,20 @@ Run the following command to send an http request to container running on localh
 
 ```sh
 curl -i localhost:49160
+```
+
+We have added code coverage following this [answer on StackOverFlow](https://stackoverflow.com/a/44971351). You can explore it with `npm run test-cov`. Last output was:
+
+```
+---------------------|---------|----------|---------|---------|-------------------
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+---------------------|---------|----------|---------|---------|-------------------
+All files            |   93.02 |       75 |   83.33 |   92.68 |
+ src                 |   92.31 |      100 |      50 |   92.31 |
+  app.js             |   92.31 |      100 |      50 |   92.31 | 31
+ src/storage         |   93.33 |       50 |      90 |   92.86 |
+  weather.storage.js |   93.33 |       50 |      90 |   92.86 | 36,81
+---------------------|---------|----------|---------|---------|-------------------
 ```
 
 ## Data read
