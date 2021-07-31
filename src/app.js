@@ -19,47 +19,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require("path");
-const fs = require("fs");
+const weather = require("./storage/weather.storage");
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("/current", async (req, res, next) => {
-  // Don't read data from any source: specify every resource file name.
-  const barFile = "pres.data";
-  const rainFile = "rain.data";
-  const tempFile = "temp.data";
-  const promises = [barFile, rainFile, tempFile].map((fileName) => {
-    return new Promise((resolve, reject) => {
-      const filePath = path.join(".", "fs", fileName);
-      fs.readFile(filePath, "utf-8", (error, data) => {
-        // Read base file name.
-        const ext = ".data";
-        const elem = path.basename(fileName, ext);
-        if (error) {
-          resolve({ name: elem, value: "" });
-        } else {
-          const result = `{ "${elem}": ${data} }`;
-          resolve(JSON.parse(result));
-        }
-      });
-    });
-  });
+app.get("/current", weather.readAll);
 
-  Promise.all(promises)
-    .then((results) => {
-      const data = results.reduce((acc, item) => {
-        return { ...acc, ...item };
-      });
-      // TODO: Output the device name and other useful data.
-      res.status(200).json({ data });
-    })
-    .catch((error) => {
-      res.status(500).json({ error });
-    });
-});
+app.get("/info", (req, res, next) =>
+  res.send(200).json({ files: weather.files })
+);
 
 const port = process.env.PORT || 15600;
 
