@@ -18,12 +18,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 const express = require("express");
-const bodyParser = require("body-parser");
 const weather = require("./storage/weather.storage");
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/current", weather.readAll);
 
