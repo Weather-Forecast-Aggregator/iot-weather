@@ -51,7 +51,8 @@ sudo docker logs <container id>
 Run the following command to send an http request to container running on localhost:
 
 ```sh
-curl -i localhost:49160
+curl -i localhost:49160/current
+curl -i localhost:49160/info
 ```
 
 We have added code coverage following this [answer on StackOverFlow](https://stackoverflow.com/a/44971351). You can explore it with `npm run test-cov`. Last output was:
