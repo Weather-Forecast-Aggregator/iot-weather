@@ -40,6 +40,8 @@ RUN adduser -D myuser
 USER myuser
 
 # Exports
-EXPOSE 15600
+# Ignored by Heroku by default
+# https://help.heroku.com/PPBPA231/how-do-i-use-the-port-environment-variable-in-container-based-apps
+# EXPOSE 15600  
 
 CMD ["npm", "start"]
