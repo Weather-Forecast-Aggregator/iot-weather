@@ -2,7 +2,7 @@
 
 Iot weather provider simulator.
 
-Deployed to [Heroku](https://iot-weather-simulator.herokuapp.com/). Status: [![Deploy](https://github.com/Weather-Forecast-Aggregator/iot-weather/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/Weather-Forecast-Aggregator/iot-weather/actions/workflows/deploy.yml).
+Deployed to [Heroku](https://iot-weather-simulator.herokuapp.com/info). Status: [![Deploy](https://github.com/Weather-Forecast-Aggregator/iot-weather/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/Weather-Forecast-Aggregator/iot-weather/actions/workflows/deploy.yml).
 
 Solved deploy to heroku bug thanks to [onlinejudge95](https://github.com/AkhileshNS/heroku-deploy/issues/92#issuecomment-841797339)
 
