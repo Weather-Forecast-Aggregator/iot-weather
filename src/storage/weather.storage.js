@@ -35,9 +35,14 @@ const processData = (fileName, error, data) => {
   const elem = path.basename(fileName, ext);
   if (error) {
     // If there's an error, the application must return a null value.
-    return { name: elem, value: "" };
+    console.log(error);
+    return { name: elem, value: data };
   } else {
-    const result = `{ "${elem}": ${data} }`;
+    console.log("Elem: %o with data: %s", elem, typeof data);
+    const result = isNaN(data)
+      ? `{ "${elem}": "${data}" }`
+      : `{ "${elem}": ${data} }`;
+    console.log("Result", result);
     return JSON.parse(result);
   }
 };
@@ -50,8 +55,12 @@ const processData = (fileName, error, data) => {
 const read = (fileName) =>
   new Promise((resolve, reject) => {
     // Suppose that all sensors put results in this folder.
-    const filePath = path.join(".", "fs", fileName);
+    const filePath = path.join(".", "src", "fs", fileName);
     fs.readFile(filePath, "utf-8", (error, data) => {
+      if (error) {
+        reject({ name: fileName, data });
+        return;
+      }
       const res = processData(fileName, error, data);
       resolve(res);
     });
@@ -96,8 +105,6 @@ const promises = () => Promise.all(files.map((fileName) => read(fileName)));
 const readAll = async (req, res) => {
   try {
     const results = await promises();
-
-    console.log("Read");
     const data = results.reduce((acc, item) => {
       return { ...acc, ...item };
     });

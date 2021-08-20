@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 const request = require("supertest");
 const assert = require("assert");
-const app = require("../app");
+const app = require("../src/app");
 
 describe("GET /", () => {
   it("responds with successful result!", (done) => {
@@ -39,7 +39,7 @@ describe("GET /", () => {
         data: {
           clouds: 4,
           humidity: 20,
-          pres: 990,
+          pressure: 990,
           rain: 1,
           snow: 0,
           temp: 26,
