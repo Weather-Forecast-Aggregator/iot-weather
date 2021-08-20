@@ -28,7 +28,7 @@ WORKDIR ${WORKINGDIR}
 # Install Dependencies
 RUN pwd
 RUN ls -la
-COPY ./package*.json ${WORKINGDIR}/
+COPY ./package*.json ${WORKINGDIR}/src
 
 RUN cd ${WORKINGDIR} && npm install --silent
 
