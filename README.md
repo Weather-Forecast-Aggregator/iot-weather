@@ -10,7 +10,7 @@ Docker tutorial from: [Dockerizing a Node.js web app](https://nodejs.org/en/docs
 
 This software is a part of [Weather Vortex](https://github.com/Weather-Vortex) project.
 
-** Table of Contents **
+**Table of Contents**
 
 - [Purpose](#purpose)
 - [How to build](#how-to-build)

@@ -38,11 +38,9 @@ const processData = (fileName, error, data) => {
     console.log(error);
     return { name: elem, value: data };
   } else {
-    console.log("Elem: %o with data: %s", elem, typeof data);
     const result = isNaN(data)
       ? `{ "${elem}": "${data}" }`
       : `{ "${elem}": ${data} }`;
-    console.log("Result", result);
     return JSON.parse(result);
   }
 };

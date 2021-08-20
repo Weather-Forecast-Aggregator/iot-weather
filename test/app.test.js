@@ -17,41 +17,41 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+"use strict";
+
 const request = require("supertest");
-const assert = require("assert");
 const app = require("../src/app");
+const chai = require("chai");
+const expect = chai.expect;
+const chai_http = require("chai-http");
+chai.use(chai_http);
 
 describe("GET /", () => {
-  it("responds with successful result!", (done) => {
-    request(app)
+  it("responds with successful result!", async () => {
+    const result = await request(app)
       .get("/current")
-      .expect(200)
-      .end(function (err, res) {
-        if (err) done(err);
-        done();
-      });
-  });
-
-  it("responds with current mock data!", (done) => {
-    request(app)
-      .get("/current")
-      .expect({
-        data: {
-          clouds: 4,
-          humidity: 20,
-          pressure: 990,
-          rain: 1,
-          snow: 0,
-          temp: 26,
-          tempMax: 28,
-          tempMin: 24,
-          weatherDescription: "Partly Cloudy",
-          weatherIcon: "mdi-weather-partly-cloudy",
-        },
-      })
-      .end(function (err, res) {
-        if (err) done(err);
-        done();
-      });
+      .set("Content-Type", "application/json")
+      .set("Accept", "application/json");
+    console.log(result.body);
+    expect(result).to.have.status(200);
+    expect(result).to.be.an("object");
+    expect(result.body).to.have.a.property("data");
+    expect(result.body.data).to.be.an("object");
+    expect(result.body.data).to.have.a.property("clouds", 4);
+    expect(result.body.data).to.have.a.property("humidity", 20);
+    expect(result.body.data).to.have.a.property("pressure", 990);
+    expect(result.body.data).to.have.a.property("rain", 1);
+    expect(result.body.data).to.have.a.property("snow", 0);
+    expect(result.body.data).to.have.a.property("temp", 26);
+    expect(result.body.data).to.have.a.property("tempMax", 28);
+    expect(result.body.data).to.have.a.property("tempMin", 24);
+    expect(result.body.data).to.have.a.property(
+      "weatherDescription",
+      "Partly Cloudy"
+    );
+    expect(result.body.data).to.have.a.property(
+      "weatherIcon",
+      "mdi-weather-partly-cloudy"
+    );
   });
 });
