@@ -71,11 +71,18 @@ All files            |   93.02 |       75 |   83.33 |   92.68 |
 
 ## Data read
 
-| Name        | File name | Measure Unit             |
-| ----------- | --------- | ------------------------ |
-| Temperature | temp.data | Integer, Celsius         |
-| Pressure    | pres.data | Integer, mb              |
-| Rain        | rain.data | Integer, 0 = no, 1 = yes |
+| Name                | File name               | Measure Unit                             |
+| ------------------- | ----------------------- | ---------------------------------------- |
+| Clouds              | clouds.data             | Integer, 0 = no clouds, 10 = many clouds |
+| Humidity            | humidity.data           | Integer, Percentage                      |
+| Pressure            | pressure.data           | Integer, mb                              |
+| Rain                | rain.data               | Integer, 0 = no, 10 = much rain          |
+| Snow                | snow.data               | Integer, 0 = no snow, 10 = much snow     |
+| Temperature         | temp.data               | Integer, Celsius                         |
+| Maximum Temperature | tempMax.data            | Integer, Celsius                         |
+| Minimum Temperature | tempMin.data            | Integer, Celsius                         |
+| Weather Icon        | weatherIcon.data        | Integer, String                          |
+| Weather Description | weatherDescription.data | Integer, String                          |
 
 Those data could be improved during the project run.
 

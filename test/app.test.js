@@ -27,12 +27,24 @@ const chai_http = require("chai-http");
 chai.use(chai_http);
 
 describe("GET /", () => {
+  it("respons with successful result!", async () => {
+    const result = await request(app)
+      .get("/info")
+      .set("Content-Type", "application/json")
+      .set("Accept", "application/json");
+
+    expect(result).to.have.status(200);
+    expect(result).to.be.an("object");
+    expect(result.body).to.have.a.property("name", process.env.DEVICE_NAME);
+    expect(result.body).to.have.a.property("files").to.be.an("array");
+  });
+
   it("responds with successful result!", async () => {
     const result = await request(app)
       .get("/current")
       .set("Content-Type", "application/json")
       .set("Accept", "application/json");
-    console.log(result.body);
+
     expect(result).to.have.status(200);
     expect(result).to.be.an("object");
     expect(result.body).to.have.a.property("data");

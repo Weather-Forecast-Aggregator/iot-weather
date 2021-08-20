@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/current", weather.readAll);
 
 app.get("/info", (req, res, next) =>
-  res.status(200).json({ files: weather.files })
+  res.status(200).json({ name: process.env.DEVICE_NAME, files: weather.files })
 );
 
 const port = process.env.PORT || 15600;
