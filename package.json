@@ -2,9 +2,9 @@
   "name": "iot-weather",
   "version": "1.0.1",
   "description": "Iot weather provider simulator",
-  "main": "app.js",
+  "main": "./src/app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./src/app.js",
     "test": "mocha ./test/* --exit",
     "test-cov": "nyc --reporter=text npm test",
     "test-cov-html": "nyc --reporter=html npm test"

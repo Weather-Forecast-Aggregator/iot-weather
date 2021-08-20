@@ -35,7 +35,20 @@ describe("GET /", () => {
   it("responds with current mock data!", (done) => {
     request(app)
       .get("/current")
-      .expect({ data: { pres: 990, rain: 1, temp: 28 } })
+      .expect({
+        data: {
+          clouds: 4,
+          humidity: 20,
+          pres: 990,
+          rain: 1,
+          snow: 0,
+          temp: 26,
+          tempMax: 28,
+          tempMin: 24,
+          weatherDescription: "Partly Cloudy",
+          weatherIcon: "mdi-weather-partly-cloudy",
+        },
+      })
       .end(function (err, res) {
         if (err) done(err);
         done();
