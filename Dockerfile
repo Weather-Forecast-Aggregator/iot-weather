@@ -28,12 +28,12 @@ WORKDIR ${WORKINGDIR}
 # Install Dependencies
 RUN pwd
 RUN ls -la
-COPY ./src/package*.json ${WORKINGDIR}/
+COPY ./package*.json ${WORKINGDIR}/src
 
 RUN cd ${WORKINGDIR} && npm install --silent
 
 # Copy app source code
-COPY ./src ${WORKINGDIR}/
+COPY ./src/ ${WORKINGDIR}/src/
 
 # Run the image as a non-root user
 RUN adduser -D myuser

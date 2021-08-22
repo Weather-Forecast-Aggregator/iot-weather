@@ -17,6 +17,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+"use strict";
+
 const fs = require("fs");
 const path = require("path");
 
@@ -33,9 +35,12 @@ const processData = (fileName, error, data) => {
   const elem = path.basename(fileName, ext);
   if (error) {
     // If there's an error, the application must return a null value.
-    return { name: elem, value: "" };
+    console.log(error);
+    return { name: elem, value: data };
   } else {
-    const result = `{ "${elem}": ${data} }`;
+    const result = isNaN(data)
+      ? `{ "${elem}": "${data}" }`
+      : `{ "${elem}": ${data} }`;
     return JSON.parse(result);
   }
 };
@@ -48,18 +53,40 @@ const processData = (fileName, error, data) => {
 const read = (fileName) =>
   new Promise((resolve, reject) => {
     // Suppose that all sensors put results in this folder.
-    const filePath = path.join(".", "fs", fileName);
+    const filePath = path.join(".", "src", "fs", fileName);
     fs.readFile(filePath, "utf-8", (error, data) => {
+      if (error) {
+        reject({ name: fileName, data });
+        return;
+      }
       const res = processData(fileName, error, data);
       resolve(res);
     });
   });
 
 // Don't read data from any source: specify every resource file name.
-const barFile = "pres.data";
+const cloudsFile = "clouds.data";
+const humidityFile = "humidity.data";
+const pressureFile = "pressure.data";
 const rainFile = "rain.data";
+const snowFile = "snow.data";
 const tempFile = "temp.data";
-const files = [barFile, rainFile, tempFile];
+const tempMaxFile = "tempMax.data";
+const tempMinFile = "tempMin.data";
+const weatherDescriptionFile = "weatherDescription.data";
+const weatherIconFile = "weatherIcon.data";
+const files = [
+  cloudsFile,
+  humidityFile,
+  pressureFile,
+  rainFile,
+  snowFile,
+  tempFile,
+  tempMaxFile,
+  tempMinFile,
+  weatherDescriptionFile,
+  weatherIconFile,
+];
 
 /**
  * Read all files defined in files array and return their contents.
@@ -67,19 +94,23 @@ const files = [barFile, rainFile, tempFile];
  */
 const promises = () => Promise.all(files.map((fileName) => read(fileName)));
 
-const readAll = (req, res, next) =>
-  promises()
-    .then((results) => {
-      console.log("Read");
-      const data = results.reduce((acc, item) => {
-        return { ...acc, ...item };
-      });
-      // TODO: Output the device name and other useful data.
-      res.status(200).json({ data });
-    })
-    .catch((error) => {
-      res.status(500).json({ error });
+/**
+ * Read all files to get weather data.
+ * @param {Request} req Express Request.
+ * @param {Response} res Express Response.
+ * @returns Response to the client.
+ */
+const readAll = async (req, res) => {
+  try {
+    const results = await promises();
+    const data = results.reduce((acc, item) => {
+      return { ...acc, ...item };
     });
+    res.status(200).json({ data });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
 
 module.exports = {
   readAll,

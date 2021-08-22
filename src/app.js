@@ -17,6 +17,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+"use strict";
+
 const express = require("express");
 const weather = require("./storage/weather.storage");
 
@@ -27,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/current", weather.readAll);
 
 app.get("/info", (req, res, next) =>
-  res.status(200).json({ files: weather.files })
+  res.status(200).json({ name: process.env.DEVICE_NAME, files: weather.files })
 );
 
 const port = process.env.PORT || 15600;
