@@ -123,5 +123,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.output.tags }} # ${{ steps.package-version.outputs.current-version}}
+          tags: ${{ steps.meta.outputs.tags }} # ${{ steps.package-version.outputs.current-version}}
           labels: ${{ steps.meta.outputs.labels }}
