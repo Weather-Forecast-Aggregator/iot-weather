@@ -126,5 +126,5 @@ jobs:
           # ${{ steps.package-version.outputs.current-version}}
           tags: |
             ${{ steps.meta.outputs.tags }}
-            ***/weather-vortex-station:${{ steps.package-version.outputs.current-version }}
+            '***/weather-vortex-station:${{ steps.package-version.outputs.current-version }}'
           labels: ${{ steps.meta.outputs.labels }}
