@@ -123,7 +123,8 @@ jobs:
         with:
           context: .
           push: true
+          # ${{ steps.package-version.outputs.current-version}}
           tags: |
-            ${{ steps.meta.outputs.tags }} # ${{ steps.package-version.outputs.current-version}}
+            ${{ steps.meta.outputs.tags }}
             ***/weather-vortex-station:${{ steps.package-version.outputs.current-version }}
           labels: ${{ steps.meta.outputs.labels }}
