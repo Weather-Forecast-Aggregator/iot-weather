@@ -95,7 +95,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: antonioparolisi/${{ IMAGE_NAME }}
+          images: antonioparolisi/${{ env.IMAGE_NAME }}
           tags: |
             type=schedule
             type=ref,event=branch
