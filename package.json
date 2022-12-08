@@ -29,7 +29,7 @@
   "homepage": "https://github.com/Weather-Forecast-Aggregator/iot-weather#readme",
   "dependencies": {
     "dot-env": "^0.0.1",
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "chai": "^4.3.4",
